@@ -1,0 +1,74 @@
+﻿@model mvc_optimuz.Models.Socio
+
+@{
+    ViewData["Title"] = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" asp-action="Editar">
+    <input asp-for="Id" hidden/>
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+        </div>
+
+        <div class="form-group row">
+            <h2 class="text-info pl-3">Editar Socio</h2>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="NombreSocio" class="form-label">Nombre</label>
+                    <input asp-for="NombreSocio" class="form-control" />
+                    <span asp-validation-for="NombreSocio" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="ApellidoSocio" class="form-label">Apellido</label>
+                    <input asp-for="ApellidoSocio" class="form-control" />
+                    <span asp-validation-for="ApellidoSocio" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="tipoDocumento" class="form-label">Tipo de Documento</label>
+                    <input asp-for="tipoDocumento" class="form-control" />
+                    <span asp-validation-for="tipoDocumento" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="numDocumento" class="form-label">N° Documento</label>
+                    <input asp-for="numDocumento" class="form-control" />
+                    <span asp-validation-for="numDocumento" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="correo" class="form-label">Correo</label>
+                    <input asp-for="correo" class="form-control" />
+                    <span asp-validation-for="correo" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="telefono" class="form-label">Telefono</label>
+                    <input asp-for="telefono" class="form-control" />
+                    <span asp-validation-for="telefono" class="text-danger"></span>
+                </div>
+            </div>
+            <br />
+            <div class="d-grid gap-2 d-md-block">
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+                <a asp-controller="Socio" asp-action="Index" class="btn btn-success"> Regresar </a>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{ <partial name="_ValidationScriptsPartial" />}
+}
+

@@ -1,0 +1,90 @@
+﻿@model mvc_optimuz.Models.Promocion
+
+@{
+    var titulo = "¿Esta seguro de eliminar esta promoción?";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" asp-action="Eliminar">
+
+    <input asp-for="Id" hidden />
+
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <h2 class="text-danger">@titulo</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-8">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="NombrePromocio" class="form-label">Nombre de la promoción</label>
+                            <input asp-for="NombrePromocio" disabled class="form-control" />
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="DecripcionCorta" class="form-label">Descripción corta de la promoción</label>
+                            <input asp-for="DecripcionCorta" disabled class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="Descripcion" class="form-label">Descripción de la promoción</label>
+                            <textarea asp-for="Descripcion" disabled class="form-control summernote"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="Precio" class="form-label">Precio de la promoción</label>
+                            <input asp-for="Precio" disabled class="form-control" />
+
+                        </div>
+                    </div>
+
+                    <div class="row" hidden>
+                        <div class="col-md-6">
+                            <label asp-for="ImagenURL" class="form-label">Imagen de la promoción</label>
+                            <input asp-for="ImagenURL" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="ContratoId" class="form-label">Contrato</label>
+                            <input asp-for="ContratoId" hidden class="form-control" />
+                            <input asp-for="Contrato.NombreContrato" disabled class="form-control" />
+                        </div>
+                    </div>
+                    <br />
+
+                    <div class="d-grid gap-2 d-md-block">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                        <a asp-controller="Promocion" asp-action="Index" class="btn btn-success">Regresar</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                @if (Model.Id != 0)
+                {
+                    <img src="@WC.ImagenRuta@Model.ImagenURL" width="100%" style="border-radius:5px; border:1px solid #bbb" />
+                }
+
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+}

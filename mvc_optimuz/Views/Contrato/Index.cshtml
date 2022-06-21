@@ -1,0 +1,72 @@
+﻿@model IEnumerable<mvc_optimuz.Models.Contrato>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Lista de Contratos</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Contrato" asp-action="Crear" class="btn btn-primary">
+                <i class="fa-solid fa-plus"></i> Nuevo Contrato
+            </a>
+            <a asp-controller="Promocion" asp-action="Upsert" class="btn btn-primary">
+                <i class="fa-solid fa-plus"></i> Nueva Promocion
+            </a>
+        </div>
+    </div>
+    <br />
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th class="text-center">
+                        Nombre del Contrato
+                    </th>
+                    <th class="text-center">
+                        Descripcion
+                    </th>
+                    <th class="text-center">
+                        Precio
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th class="text-center" width="30%">@item.NombreContrato</th>
+                        <th class="text-center" width="20%">@item.Descripcion</th>
+                        <th class="text-center" width="20%">@item.Precio</th>
+                        <th class="text-center">
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-controller="Contrato" asp-action="Editar" asp-route-Id="@item.Id" class="btn btn-primary mx-3">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                                <a asp-controller="Contrato" asp-action="Consultar" asp-route-Id="@item.Id" class="btn btn-info mx-3">
+                                    <i class="fa-solid fa-circle-info"></i>
+                                </a>
+                                <a asp-controller="Contrato" asp-action="Eliminar" asp-route-Id="@item.Id" class="btn btn-danger mx-3">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+                            </div>
+                        </th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No hay registros</p>
+    }
+</div>
+

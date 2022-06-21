@@ -1,0 +1,72 @@
+﻿@model mvc_optimuz.Models.Personal
+
+@{
+    ViewData["Title"] = "Detalle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" asp-action="Detalle">
+    <input asp-for="Id" hidden/>
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-info">
+
+        </div>
+
+        <div class="form-group row">
+            <h2 class="text-info pl-3">Detalles del Personal</h2>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="NombrePersonal" class="form-label">Nombre</label>
+                    <input asp-for="NombrePersonal" disabled class="form-control" />
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="ApellidoPersonal" class="form-label">Apellido</label>
+                    <input asp-for="ApellidoPersonal" disabled class="form-control" />
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="tipoDocumento" class="form-label">Tipo de Documento</label>
+                    <input asp-for="tipoDocumento" disabled class="form-control" />
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="numDocumento" class="form-label">N° Documento</label>
+                    <input asp-for="numDocumento" disabled class="form-control" />
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="correo" class="form-label">Correo</label>
+                    <input asp-for="correo" disabled class="form-control" />
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="telefono" class="form-label">Telefono</label>
+                    <input asp-for="telefono" disabled class="form-control" />
+
+                </div>
+            </div>
+            <br />
+            <div class="d-grid gap-2 d-md-block">
+                <a asp-controller="Personal" asp-action="Index" class="btn btn-success"> Regresar </a>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{ <partial name="_ValidationScriptsPartial" />}
+}

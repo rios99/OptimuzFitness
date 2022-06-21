@@ -1,0 +1,69 @@
+﻿@model IEnumerable<mvc_optimuz.Models.Socio>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Lista de Socios</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Socio" asp-action="Crear" class="btn btn-primary">
+                <i class="fa-solid fa-plus"></i> Nuevo Socio
+            </a>
+        </div>
+    </div>
+    <br />
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th class="text-center">
+                        Nombre del Socio
+                    </th>
+                    <th class="text-center">
+                        Apellido del Socio
+                    </th>
+                    <th class="text-center">
+                        Telefono
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th class="text-center" width="30%">@item.NombreSocio</th>
+                        <th class="text-center" width="20%">@item.ApellidoSocio</th>
+                        <th class="text-center" width="20%">@item.telefono</th>
+                        <th class="text-center">
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-controller="Socio" asp-action="Editar" asp-route-Id="@item.Id" class="btn btn-primary mx-3">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                                <a asp-controller="Socio" asp-action="Detalle" asp-route-Id="@item.Id" class="btn btn-info mx-3">
+                                    <i class="fa-solid fa-circle-info"></i>
+                                </a>
+                                <a asp-controller="Socio" asp-action="Eliminar" asp-route-Id="@item.Id" class="btn btn-danger mx-3">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+                            </div>
+                        </th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No hay registros</p>
+    }
+</div>
+
